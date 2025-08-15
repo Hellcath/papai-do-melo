@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Melo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="pergunta">Quem é o papai do Melo?</h1>
+        <button id="descobrirBtn">Descubra</button>
+        <h2 id="resposta" class="escondido">Hellcath</h2>
+    </div>
+
+    <script>
+        const descobrirBtn = document.getElementById('descobrirBtn');
+        const pergunta = document.getElementById('pergunta');
+        const resposta = document.getElementById('resposta');
+
+        descobrirBtn.addEventListener('click', () => {
+            pergunta.style.display = 'none';
+            descobrirBtn.style.display = 'none';
+            
+            resposta.classList.remove('escondido');
+            
+            criarFogosDeArtificio();
+        });
+
+        function criarFogosDeArtificio() {
+            for (let i = 0; i < 20; i++) {
+                const fogo = document.createElement('div');
+                fogo.classList.add('fogo-de-artificio');
+                fogo.style.left = `${Math.random() * 100}vw`;
+                fogo.style.animationDelay = `${Math.random() * 2}s`;
+                document.body.appendChild(fogo);
+
+                fogo.addEventListener('animationend', () => {
+                    fogo.remove();
+                });
+            }
+        }
+    </script>
+</body>
+</html>
